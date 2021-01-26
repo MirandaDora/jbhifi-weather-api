@@ -1,5 +1,5 @@
 
-# seek-iam-meeting-api
+# Intro:
 jbhifi-weather-api is a basic component of jbhifi-weather project for providing weather information.
 
 ## Environment
