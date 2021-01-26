@@ -29,7 +29,7 @@ const getWeatherHandler = async (event) => {
       }
     } catch (error) {
       console.log('Error getting weather info', error)
-      throw new Error('Bad Request')
+      throw error
     }
   } catch (error) {
     return genericErrorHandler(error)

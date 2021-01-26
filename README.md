@@ -1,19 +1,23 @@
 
 # seek-iam-meeting-api
-seek-iam-meeting-api is a basic component of seek-iam project for providing meeting information.
+jbhifi-weather-api is a basic component of jbhifi-weather project for providing weather information.
 
 ## Environment
 - ACCOUNT_ID
-- AUTHORIZER_ARN
 - STAGE
 
 ## APIs
 
-### PUT
-- createMeeting
-
 ### GET
-- listMeeting
+- getWeather
 
-
-
+## setup:
+`npm install` (node version 12.13.0, npm version 6.12)
+### local test: 
+`npm run offline`
+### unit test:
+`npm test`
+### deploy:
+`npm run deploy`
+### pre-setup:
+A dynamodb called jbhifi-weather-api-key
