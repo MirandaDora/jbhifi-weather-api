@@ -1,0 +1,43 @@
+
+image: node:12.13
+
+pipelines:
+  default:
+    - step:
+        script:
+          - npm install
+          - npm run lint
+          - npm test
+        services:
+          - mongo
+  branches:
+    development:
+      - step:
+          name: Build and Deploy to development
+          deployment: development
+          image: cxzltd/node1213-awscli-awssdk:latest
+          script:
+            - aws configure set aws_access_key_id $LOT_DEV_DEPLOY_AWS_ACCESS_KEY_ID
+            - aws configure set aws_secret_access_key $LOT_DEV_DEPLOY_AWS_SECRET_ACCESS_KEY
+            - npm install
+            - npm test
+            - STAGE=development npm run deploy
+          services:
+            - mongo
+    master:
+      - step:
+          name: Build and Deploy to production
+          image: cxzltd/node1213-awscli-awssdk:latest
+          deployment: production
+          script:
+            - aws configure set aws_access_key_id $LOT_PROD_DEPLOY_AWS_ACCESS_KEY_ID
+            - aws configure set aws_secret_access_key $LOT_PROD_DEPLOY_AWS_SECRET_ACCESS_KEY
+            - npm install
+            - npm test
+            - STAGE=production npm run deploy
+          services:
+            - mongo
+definitions:
+  services:
+    mongo:
+      image: mongo
