@@ -15,7 +15,7 @@ const getWeatherHandler = async (event) => {
       throw new Error('Bad Request')
     }
     const requestParam = {
-      url: `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=c78709b7a991e8b3f65962ed11e5761e`,
+      url: `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${process.env.WEATHER_API_KEY}&units=metric`,
       method: 'get'
     }
     try {

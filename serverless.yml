@@ -10,6 +10,7 @@ provider:
     NODE_ENV: ${self:provider.stage}
     REGION: ${self:provider.region}
     API_KEY_DDB_TABLE: 'jbhifi-weather-api-key'
+    WEATHER_API_KEY: 'c78709b7a991e8b3f65962ed11e5761e'
   apiKeys:
     - ${self:service}-${self:provider.stage}-x-api-key1
     - ${self:service}-${self:provider.stage}-x-api-key2
